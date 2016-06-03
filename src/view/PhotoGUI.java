@@ -49,7 +49,7 @@ public class PhotoGUI extends JFrame {
 	private void setupPhotoPanel() {
 		PhotoPanel photo = new PhotoPanel();
 		add(photo);
-		setJMenuBar(new MenuBar(photo));
+		setJMenuBar(new MenuBar(this, photo));
 	}
 	
 	
@@ -64,7 +64,8 @@ public class PhotoGUI extends JFrame {
 		int screenHeight = screenSize.height;
 		
 //		setSize(screenWidth - 100, screenHeight - 100); 
-		setSize(screenWidth / 2, screenHeight / 2); 
+		setSize(screenWidth / 2 + 200, screenHeight / 2 + 200); 
+//		setSize(800, 800);
 	}
 	
 }

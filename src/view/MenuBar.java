@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -51,13 +52,17 @@ public class MenuBar extends JMenuBar {
 	// Help Menu Buttons
 	private final JMenuItem my_info_button = new JMenuItem("Info", 'I');
 	
+	// The frame of the program
+	private final JFrame my_frame;
+	
 	private BufferedImage my_image;
 	
 	private final PhotoPanel my_photo_panel;
 
-	public MenuBar(PhotoPanel the_photo_panel) {
+	public MenuBar(final JFrame the_frame, final PhotoPanel the_photo_panel) {
 		super();
 		my_photo_panel = the_photo_panel;
+		my_frame = the_frame;
 		createFileMenu();
 		createEditMenu();
 		createViewMenu();
@@ -73,6 +78,13 @@ public class MenuBar extends JMenuBar {
 		fileMenu.add(my_import_button);
 		fileMenu.add(my_save_button);
 		fileMenu.add(my_export_button);
+		
+		// Setup the Exit button
+		my_exit_button.addActionListener(new ActionListener() {
+		      public void actionPerformed(final ActionEvent the_event) {
+		        my_frame.dispose();
+		      }
+	    });
 		fileMenu.add(my_exit_button);
 		
 		// Add listeners to the import button.
@@ -175,5 +187,6 @@ public class MenuBar extends JMenuBar {
 			}
 		});
 	}
+	
 	
 }
